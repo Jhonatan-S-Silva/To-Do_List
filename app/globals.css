@@ -1,0 +1,313 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1a1614; /* Fundo escuro amadeirado/quente */
+  color: #2c2523;
+  font-family:
+    Georgia, "Times New Roman", Times, serif; /* Fonte com estilo literário */
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+header h1 {
+  color: #e2d1c3;
+  font-size: 32px;
+  font-family: Georgia, serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+  margin-top: 8px;
+  color: #a89689;
+  font-size: 15px;
+}
+
+/* CONTAINER DO LIVRO ABERTO */
+section {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto 50px auto;
+  padding: 40px 50px;
+
+  /* Cor e textura de página de livro antigo */
+  background-color: #f4ecd8;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 100% 24px; /* Simula linhas suaves se desejar */
+
+  border-radius: 8px 16px 16px 8px;
+
+  /* Efeito da dobra central do livro e sombra nas páginas */
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.5),
+    inset 40px 0 50px -20px rgba(0, 0, 0, 0.15),
+    /* Dobra do lado esquerdo */ inset -40px 0 50px -20px rgba(0, 0, 0, 0.15),
+    /* Dobra do lado direito */ inset 0 0 100px rgba(160, 130, 90, 0.2); /* Envelhecido nas bordas */
+
+  border-left: 8px solid #3d2b1f; /* Simula a lombada/capa do livro */
+  position: relative;
+}
+
+/* Dobra central do livro */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.12) 45%,
+    rgba(0, 0, 0, 0.18) 50%,
+    rgba(0, 0, 0, 0.12) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+}
+
+section h2 {
+  margin-bottom: 8px;
+  color: #3b271d;
+  font-size: 26px;
+  border-bottom: 2px solid #d4c3b3;
+  padding-bottom: 8px;
+}
+
+section p {
+  color: #6b584c;
+  line-height: 1.6;
+}
+
+form {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+form input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  background-color: #fcf9f2;
+  color: #2c2523;
+  border: 1px solid #c8b9ab;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+form input:focus {
+  border-color: #8c5a3a;
+}
+
+form input::placeholder {
+  color: #9e8d80;
+}
+
+form button {
+  padding: 13px 22px;
+  background-color: #7a4a2a;
+  color: #f4ecd8;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+form button:hover {
+  background-color: #5c351c;
+}
+
+.contadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.contadores div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 15px;
+  background-color: #eae1cd;
+  border: 1px solid #d4c7b5;
+  border-radius: 8px;
+}
+
+.contadores span {
+  color: #6b584c;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contadores strong {
+  color: #7a4a2a;
+  font-size: 26px;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.filtros button {
+  padding: 8px 16px;
+  background-color: #eae1cd;
+  color: #5c4a3e;
+  border: 1px solid #d4c7b5;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.filtros button:hover {
+  border-color: #7a4a2a;
+  color: #2c2523;
+}
+
+.filtros button.ativo {
+  background-color: #7a4a2a;
+  color: #f4ecd8;
+  border-color: #7a4a2a;
+}
+
+.lista-tarefas {
+  margin-top: 25px;
+}
+
+.lista-tarefas article {
+  padding: 14px 16px;
+  margin-top: 10px;
+  background-color: #fcf9f2;
+  border: 1px solid #dcd1c4;
+  border-radius: 6px;
+  color: #2c2523;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.lista-tarefas article input {
+  width: 18px;
+  height: 18px;
+  accent-color: #7a4a2a;
+  cursor: pointer;
+}
+
+.lista-tarefas article span {
+  color: #2c2523;
+  font-size: 16px;
+}
+
+.lista-tarefas article.concluida span {
+  color: #9e8d80;
+  text-decoration: line-through;
+}
+
+.lista-tarefas article button {
+  margin-left: auto;
+  padding: 6px 12px;
+  background-color: #eedcdb;
+  color: #a83232;
+  border: 1px solid #d9b8b8;
+  border-radius: 5px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lista-tarefas article button:hover {
+  background-color: #a83232;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  section {
+    width: 95%;
+    padding: 25px 20px;
+    border-left: 4px solid #3d2b1f;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .contadores {
+    grid-template-columns: 1fr;
+  }
+
+  /* ESTILOS DA BARRA DE PROGRESSO */
+  .container-progresso {
+    margin-top: 25px;
+    background-color: #222228;
+    border: 1px solid #38383f;
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .info-progresso {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #a1a1aa;
+  }
+
+  .info-progresso span:last-child {
+    color: #a855f7;
+    font-weight: bold;
+  }
+
+  .barra-fundo {
+    width: 100%;
+    height: 8px;
+    background-color: #2d2d35;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .barra-preenchida {
+    height: 100%;
+    background-color: #9333ea;
+    border-radius: 4px;
+    transition: width 0.3s ease-in-out;
+  }
+}
